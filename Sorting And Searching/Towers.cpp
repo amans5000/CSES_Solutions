@@ -12,24 +12,29 @@ int main()
     cin >> arr[i];
   }
 
-  vector<int> ans;
-  ans.push_back(arr[0]);
-
-  for (int i = 1; i < n; i++)
+  if (n <= 1)
   {
-    auto it = find_if(ans.begin(), ans.end(), [num = arr[i]](int a)
-                      { return a < num; });
+    cout << n;
+    return 0;
+  }
 
-    if (it != ans.end())
+  vector<int> tower;
+
+  for (int i = 0; i < arr.size(); i++)
+  {
+    auto index = upper_bound(tower.begin(), tower.end(), arr[i]);
+
+    if (index == tower.end())
     {
-      *it = arr[i];
+      tower.push_back(arr[i]);
     }
     else
     {
-      ans.push_back(arr[i]);
+      *index = arr[i];
     }
   }
 
-  cout << ans.size();
+  cout << tower.size();
+
   return 0;
 }
