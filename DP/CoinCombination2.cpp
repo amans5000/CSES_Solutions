@@ -3,7 +3,7 @@
 using namespace std;
 #define mod 1000000007
 
-ll coinComb(int n, vector<ll> &dp, vector<int> &coins)
+ll coinComb(int n, vector<ll> &dp, vector<int> &coins, int minCoin)
 {
   if (n == 0)
   {
@@ -21,10 +21,10 @@ ll coinComb(int n, vector<ll> &dp, vector<int> &coins)
   }
 
   ll val = 0;
-  for (int i = 0; i < coins.size(); i++)
+  for (int i = minCoin; i < coins.size(); i++)
   {
     if (coins[i] <= n)
-      val += coinComb(n - coins[i], dp, coins) % mod;
+      val += coinComb(n - coins[i], dp, coins, i) % mod;
   }
 
   dp[n] = val % mod;
@@ -44,7 +44,9 @@ int main()
     cin >> coins[i];
   }
 
-  ll result = coinComb(x, dp, coins);
+  sort(coins.begin(), coins.end());
+
+  ll result = coinComb(x, dp, coins, 0);
   cout << result << endl;
 
   return 0;
