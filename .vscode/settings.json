@@ -4,6 +4,7 @@
     "iostream": "cpp",
     "cmath": "cpp",
     "functional": "cpp",
-    "ratio": "cpp"
+    "ratio": "cpp",
+    "valarray": "cpp"
   }
 }
