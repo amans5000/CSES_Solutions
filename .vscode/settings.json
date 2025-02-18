@@ -5,6 +5,7 @@
     "cmath": "cpp",
     "functional": "cpp",
     "ratio": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "random": "cpp"
   }
 }
