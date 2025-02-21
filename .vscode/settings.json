@@ -6,6 +6,13 @@
     "functional": "cpp",
     "ratio": "cpp",
     "valarray": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "variant": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "string_view": "cpp",
+    "initializer_list": "cpp",
+    "regex": "cpp",
+    "utility": "cpp"
   }
 }
