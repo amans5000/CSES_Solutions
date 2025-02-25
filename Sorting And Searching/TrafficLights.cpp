@@ -4,22 +4,33 @@ using namespace std;
 int main()
 {
   int n, x;
-  cin >> x >> n;
+  cin >> n >> x;
 
-  vector<int> signal(n);
-  for (int i = 0; i < n; i++)
+  set<int> s;
+  multiset<int> m;
+  vector<int> signal(x);
+
+  s.insert(0);
+  s.insert(n);
+  m.insert(n);
+
+  for (int i = 0; i < x; i++)
   {
     cin >> signal[i];
-  }
+    s.insert(signal[i]);
 
-  vector<int> arr(x + 1, 0);
-  int maxCount = 0;
+    auto it = s.find(signal[i]);
+    int nextNo = *next(it);
+    int prevNo = *prev(it);
 
-  int i = 0;
-  while (n--)
-  {
-    int mid = i++;
-    
+    auto pos = m.find(nextNo - prevNo);
+    if (pos != m.end())
+      m.erase(pos);
+
+    m.insert(nextNo - signal[i]);
+    m.insert(signal[i] - prevNo);
+
+    cout << *m.rbegin() << " ";
   }
 
   return 0;
